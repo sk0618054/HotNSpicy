@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Manage Menu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /*-----------------------------------*\
+  #CUSTOM PROPERTY (From Grilli style.css)
+\*-----------------------------------*/
+
+      :root {
+        --gold-crayola: hsl(38, 61%, 73%);
+        --quick-silver: hsla(0, 0%, 65%, 1);
+        --davys-grey: hsla(30, 3%, 34%, 1);
+        --smoky-black-1: hsla(40, 12%, 5%, 1);
+        --smoky-black-2: hsla(30, 8%, 5%, 1);
+        --smoky-black-3: hsla(0, 3%, 7%, 1);
+        --eerie-black-1: hsla(210, 4%, 9%, 1);
+        --eerie-black-2: hsla(210, 4%, 11%, 1);
+        --eerie-black-3: hsla(180, 2%, 8%, 1);
+        --eerie-black-4: hsla(0, 0%, 13%, 1);
+        --white: hsla(0, 0%, 100%, 1);
+        --orange-red: hsl(0, 95%, 52%);
+
+        --font-family-forum: "Forum", cursive;
+        --font-family-dm-sans: "DM Sans", sans-serif;
+
+        --fs-1: 3.4rem;
+        --fs-3: 2.8rem;
+        --fs-4: 2.4rem;
+        --fs-8: 1.5rem;
+        --fs-9: 1.4rem;
+        --fs-10: 1.3rem;
+        --fw-400: 400;
+        --fw-700: 700;
+        --radius-24: 24px;
+        --transition-1: 250ms ease;
+      }
+
+      /*-----------------------------------*\
+  #BASE ADMIN STYLES
+\*-----------------------------------*/
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 10px;
+      }
+
+      body {
+        font-family: var(--font-family-dm-sans);
+        background-color: var(--eerie-black-1);
+        color: var(--white);
+        line-height: 1.5;
+        padding-block: 50px;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--gold-crayola);
+        transition: var(--transition-1);
+      }
+      a:hover {
+        color: var(--white);
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: var(--smoky-black-2);
+        border: 1px solid var(--eerie-black-4);
+        border-radius: var(--radius-24);
+        box-shadow: 0 4px 15px hsla(0, 0%, 0%, 0.3);
+      }
+
+      h1 {
+        font-family: var(--font-family-forum);
+        font-size: var(--fs-1);
+        text-align: center;
+        color: var(--gold-crayola);
+        border-bottom: 2px solid var(--davys-grey);
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-family: var(--font-family-forum);
+        font-size: var(--fs-3);
+        color: var(--white);
+        margin-top: 40px;
+        border-bottom: 1px dashed var(--davys-grey);
+        padding-bottom: 5px;
+      }
+
+      form {
+        padding: 20px 0;
+        margin-bottom: 30px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: var(--fw-700);
+        color: var(--quick-silver);
+        font-size: var(--fs-9);
+        text-transform: uppercase;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid var(--davys-grey);
+        border-radius: 5px;
+        background-color: var(--eerie-black-4);
+        color: var(--white);
+        box-sizing: border-box;
+        font-size: var(--fs-8);
+      }
+
+      select {
+        height: 40px;
+      }
+
+      /* BUTTON STYLES */
+      .btn {
+        position: relative;
+        font-size: var(--fs-10);
+        font-weight: var(--fw-700);
+        text-transform: uppercase;
+        color: var(--smoky-black-1);
+        padding: 12px 30px;
+        border: 2px solid var(--gold-crayola);
+        border-radius: var(--radius-24);
+        background-color: var(--gold-crayola);
+        transition: var(--transition-1);
+        display: inline-block;
+      }
+
+      button[type="submit"] {
+        font-size: var(--fs-10);
+        font-weight: var(--fw-700);
+        text-transform: uppercase;
+        color: var(--smoky-black-1);
+        padding: 12px 30px;
+        border: 2px solid var(--gold-crayola);
+        border-radius: var(--radius-24);
+        background-color: var(--gold-crayola);
+        transition: var(--transition-1);
+        display: block;
+        width: 100%;
+      }
+
+      button[type="submit"]:hover {
+        background-color: var(--smoky-black-1);
+        color: var(--gold-crayola);
+        border-color: var(--gold-crayola);
+      }
+
+      .message {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: var(--fw-700);
+        font-size: var(--fs-8);
+      }
+      .success {
+        background-color: rgba(60, 118, 61, 0.2);
+        color: var(--gold-crayola);
+        border: 1px solid var(--gold-crayola);
+      }
+      .error {
+        background-color: rgba(169, 68, 66, 0.2);
+        color: var(--orange-red);
+        border: 1px solid var(--orange-red);
+      }
+      .home-link {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        font-size: var(--fs-4);
+        color: var(--gold-crayola);
+        text-decoration: none;
+        font-family: var(--font-family-forum);
+      }
+      .home-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Menu Administration Panel</h1>
+
+      <% // Check if the local 'message' variable exists and is not empty. %> <%
+      if (typeof message !== 'undefined' && message) { %>
+      <div
+        class="message <%= message.includes('successfully') ? 'success' : 'error' %>"
+      >
+        <p><%= message %></p>
+      </div>
+      <% } %>
+
+      <h2>Add New Category</h2>
+      <form action="/admin/category" method="POST">
+        <label for="categoryName">Category Name:</label>
+        <input
+          type="text"
+          id="categoryName"
+          name="categoryName"
+          placeholder="e.g., Appetizers or Desserts"
+          required
+        />
+        <button type="submit">Add Category</button>
+      </form>
+
+      <h2>Add New Menu Item</h2>
+      <form action="/admin/item" method="POST">
+        <label for="name">Item Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="e.g., Spicy Tuna Roll"
+          required
+        />
+
+        <label for="description">Description (Optional):</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="3"
+          placeholder="A brief description of the dish..."
+        ></textarea>
+
+        <label for="price">Price (e.g., $12.99 or 12.99):</label>
+        <input
+          type="text"
+          id="price"
+          name="price"
+          placeholder="e.g., $12.99 or 12.99"
+          required
+        />
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Select a Category</option>
+          <% if (categories.length > 0) { %> <% categories.forEach(category => {
+          %>
+          <option value="<%= category.name %>"><%= category.name %></option>
+          <% }); %> <% } else { %>
+          <option value="" disabled>
+            No categories available. Please add one above.
+          </option>
+          <% } %>
+        </select>
+
+        <button type="submit">Add Menu Item</button>
+      </form>
+      <h3>🗑️ Delete Category</h3>
+      <form action="/admin/category/delete" method="POST">
+        <select name="categoryName" required>
+          <option value="">-- Select Category to Delete --</option>
+          <% categories.forEach(function(category) { %>
+          <option value="<%= category.name %>"><%= category.name %></option>
+          <% }); %>
+        </select>
+        <button
+          type="submit"
+          onclick="return confirm('WARNING: This will delete the category AND all its menu items. Are you sure?');"
+        >
+          Delete Category
+        </button>
+      </form>
+
+      <h2>Remove Menu Items</h2>
+
+      <% for (const categoryName in menu) { %>
+      <h3
+        style="
+          margin-top: 25px;
+          color: white; /* Darker text for visibility */
+          padding-bottom: 8px;
+          font-size: 1.4em;
+        "
+      >
+        Category: **<%= categoryName %>**
+      </h3>
+
+      <div
+        style="
+          display: grid; /* Use a grid for a responsive card layout (optional, but good) */
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 15px; /* Spacing between cards */
+          padding: 0;
+        "
+      >
+        <% menu[categoryName].forEach(function(item) { %>
+        <div
+          style="
+            font-size: 1em;
+            padding: 15px;
+            background-color: #b6e0ba; /* White background for the card */
+            border: 1px solid #ddd; /* Light border */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column; /* Stack details and button if necessary */
+            justify-content: space-between; /* Push button to bottom/right */
+            min-height: 100px;
+          "
+        >
+          <div style="margin-bottom: 10px">
+            <p
+              style="
+                font-weight: bold;
+                font-size: 1.2em; /* Item name stands out */
+                color: #000; /* Ensures item name is black and visible */
+                margin: 0;
+              "
+            >
+              <%= item.name %>
+            </p>
+            <p style="color: #6c757d; font-size: 0.9em; margin: 5px 0 0 0">
+              <%= item.description %>
+            </p>
+            <p style="color: #28a745; font-weight: bold; margin: 5px 0 0 0">
+              Price: $<%= item.price %>
+            </p>
+          </div>
+
+          <form
+            action="/admin/item/delete"
+            method="POST"
+            style="
+              align-self: flex-end; /* Align button to the right */
+              margin-top: auto; /* Push button to the bottom */
+            "
+          >
+            <input type="hidden" name="itemId" value="<%= item._id %>" />
+            <button
+              type="submit"
+              onclick="return confirm('Are you sure you want to delete <%= item.name %>?');"
+              style="
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                padding: 8px 15px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background-color 0.3s;
+              "
+            >
+              Delete Item
+            </button>
+          </form>
+        </div>
+        <% }); %>
+      </div>
+      <% } %>
+      <a href="/" class="home-link">← Back to Main Menu</a>
+    </div>
+  </body>
+</html>
